@@ -3,11 +3,15 @@ package controller;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
+import javafx.geometry.NodeOrientation;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.Socket;
 
 public class ChatRoomFormController extends Thread{
     public AnchorPane chatRoomContext;
@@ -50,8 +54,8 @@ public class ChatRoomFormController extends Thread{
 //        }).start();
 
         //lblName.setText(UserLoginFormController.txtUserName.getText());
-        String userName=UserLoginFormController.userName;
-        lblName.setText(String.valueOf(userName));
+        String userName=LoginFormController.userName;
+        lblUser.setText(String.valueOf(userName));
         try {
             socket = new Socket("localhost", 5000);
             System.out.println("Socket is connected with server!");
@@ -85,9 +89,9 @@ public class ChatRoomFormController extends Thread{
 //                    break;
 //                }
 
-                System.out.println("cmd="+cmd+"-----"+"UserName"+lblName.getText());
-                if(!cmd.equalsIgnoreCase(lblName.getText()+":")){
-                    txTextArea.appendText(msg + "\n");
+                System.out.println("cmd="+cmd+"-----"+"UserName"+lblUser.getText());
+                if(!cmd.equalsIgnoreCase(lblUser.getText()+":")){
+                    txtTextArea.appendText(msg + "\n");
                 }
 
             }
@@ -99,7 +103,6 @@ public class ChatRoomFormController extends Thread{
         }
     }
 
-    Uwani, [8/9/2022 10:39 PM]
 //    public void imgSendMsgOnAction(MouseEvent mouseEvent) throws IOException {
 //
 //        String msg = txtTextMsg.getText();
@@ -139,20 +142,20 @@ public class ChatRoomFormController extends Thread{
 
 
     public void send(){
-        String msg = txtMessage.getText();
-        writer.println(lblName.getText() + ": " + txtMessage.getText());
-        txTextArea.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
-        txTextArea.appendText("Me: " + msg + "\n");
-        txtMessage.clear();
-        if(msg.equalsIgnoreCase("BYE")  (msg.equalsIgnoreCase("logout"))) {
+        String msg = txtTextField.getText();
+        writer.println(lblUser.getText() + ": " + txtTextField.getText());
+        txtTextField.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
+        txtTextArea.appendText("Me: " + msg + "\n");
+        txtTextField.clear();
+        if(msg.equalsIgnoreCase("BYE")||(msg.equalsIgnoreCase("logout"))) {
             System.exit(0);
 //            Stage stage = (Stage) txtTextMsg.getScene().getWindow();
 //            stage.close();
         }
     }
 
-    public void chooseImageOnMouseClicked(MouseEvent mouseEvent) {
-    }
+//    public void chooseImageOnMouseClicked(MouseEvent mouseEvent) {
+//    }
 
     public void txtSendMessageOnAction(ActionEvent actionEvent) {
         send();
