@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controller.ChatRoomFormController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane fx:id="chatRoomContext" prefHeight="714.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ChatRoomFormController">
+   <children>
+      <JFXTextArea fx:id="txtTextArea" layoutX="10.0" layoutY="58.0" prefHeight="531.0" prefWidth="580.0" style="-fx-border-color: black; -fx-background-color: #bdc3c7;" />
+      <JFXTextField fx:id="txtTextField" layoutX="10.0" layoutY="612.0" prefHeight="50.0" prefWidth="493.0" promptText="Type a message" style="-fx-border-color: black; -fx-background-color: #ecf0f1;" />
+      <JFXButton layoutX="513.0" layoutY="613.0" onAction="#btnSendOnAction" prefHeight="50.0" prefWidth="77.0" style="-fx-border-color: black; -fx-background-color: #2ecc71;" text="Send">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </JFXButton>
+   </children>
 </AnchorPane>
