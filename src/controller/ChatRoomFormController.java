@@ -35,37 +35,10 @@ public class ChatRoomFormController extends Thread{
     PrintWriter writer;
     Socket socket;
 
-//    final int PORT=5000;
-//
-//    ServerSocket serverSocket;
-//    Socket socket;
-//    DataInputStream dataInputStream;
-//    DataOutputStream dataOutputStream;
-//    String message ="";
-
-
 
     public void initialize(){
 
-//        new Thread(() -> {
-//            try {
-//                socket=new Socket("localhost",PORT);
-//                dataOutputStream=new DataOutputStream(socket.getOutputStream());
-//                dataInputStream=new DataInputStream(socket.getInputStream());
-//
-//                while (!message.equals("bye")){
-//                    message=dataInputStream.readUTF();
-//                    //System.out.println(message);
-//                    txTextArea.appendText("\nserver: "+message);
-//                }
-//
-//
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }).start();
 
-        //lblName.setText(UserLoginFormController.txtUserName.getText());
         String userName=LoginFormController.userName;
         lblUser.setText(String.valueOf(userName));
         try {
@@ -89,10 +62,9 @@ public class ChatRoomFormController extends Thread{
                 String[] tokens = msg.split(" ");
                 String cmd = tokens[0];
 
-//                txtTextArea.appendText(cmd+"\n");
                 StringBuilder fullMsg = new StringBuilder();
                 for (int i = 1; i < tokens.length; i++) {
-                    fullMsg.append(tokens[i]);
+                    fullMsg.append(tokens[i]+" ");
                 }
 
 
@@ -114,7 +86,6 @@ public class ChatRoomFormController extends Thread{
 
 
                 if (firstChars.equalsIgnoreCase("img")) {
-                    //for the Images
 
                     st = st.substring(3, st.length() - 1);
 
@@ -155,9 +126,7 @@ public class ChatRoomFormController extends Thread{
 
 
                 } else {
-                    //For the Text
-//                    text.setFill(Color.WHITE);
-                    //   text.getStyleClass().add("message");
+
                     TextFlow tempFlow = new TextFlow();
 
                     if (!cmd.equalsIgnoreCase(lblUser.getText() + ":")) {
@@ -178,22 +147,16 @@ public class ChatRoomFormController extends Thread{
 
                     if (!cmd.equalsIgnoreCase(lblUser.getText() + ":")) {
 
-                        //  tempFlow.getStyleClass().add("tempFlowFlipped");
-                        //  flow.getStyleClass().add("textFlowFlipped");
                         vBox.setAlignment(Pos.TOP_LEFT);
                         hBox.setAlignment(Pos.CENTER_LEFT);
                         hBox.getChildren().add(flow);
 
                     } else {
-                        // text.setFill(Color.WHITE);
-                        // tempFlow.getStyleClass().add("tempFlow");
-                        // flow.getStyleClass().add("textFlow");
                         Text text2=new Text(fullMsg+":Me");
                         TextFlow flow2 = new TextFlow(text2);
                         hBox.setAlignment(Pos.BOTTOM_RIGHT);
                         hBox.getChildren().add(flow2);
                     }
-                    //  hBox.getStyleClass().add("hbox");
                     Platform.runLater(() -> vBox.getChildren().addAll(hBox));
                 }
 
@@ -205,36 +168,7 @@ public class ChatRoomFormController extends Thread{
         }
     }
 
-//    public void imgSendMsgOnAction(MouseEvent mouseEvent) throws IOException {
-//
-//        String msg = txtTextMsg.getText();
-//        writer.println(txtUserName.getText() + ": " + txtTextMsg.getText());
-//        txtTextArea.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
-//        txtTextArea.appendText("Me: " + msg + "\n");
-//        txtTextMsg.clear();
-//        if(msg.equalsIgnoreCase("BYE")  (msg.equalsIgnoreCase("logout"))) {
-////            System.exit(0);
-//            Stage stage = (Stage) txtTextMsg.getScene().getWindow();
-//            stage.close();
-//        }
-//    }
 
-//    public void btnGoOnAction(ActionEvent actionEvent) {
-//        txtUserName.setText(txtNicName.getText().trim());
-//        pnePopUp.setVisible(false);
-//        apnChatForm.setVisible(true);
-//    }
-//
-//    public void AddClientOnAction(MouseEvent mouseEvent) throws IOException {
-//        Stage stage=new Stage();
-//        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/ChatForm.fxml"))));
-//        stage.setResizable(false);
-//        //primaryStage.getIcons().add(new Image("location"));
-//        stage.setTitle("sample title");
-//        stage.centerOnScreen();
-//        stage.show();
-//
-//    }
 
 
     public void btnSendOnAction(ActionEvent actionEvent) {
@@ -254,8 +188,6 @@ public class ChatRoomFormController extends Thread{
         }
     }
 
-//    public void chooseImageOnMouseClicked(MouseEvent mouseEvent) {
-//    }
 
     public void txtSendMessageOnAction(ActionEvent actionEvent) {
         send();
