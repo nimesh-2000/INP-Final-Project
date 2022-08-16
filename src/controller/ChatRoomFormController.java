@@ -2,6 +2,7 @@ package controller;
 
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+import com.sun.javafx.css.Style;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.geometry.NodeOrientation;
@@ -12,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -21,6 +23,8 @@ import javafx.stage.Stage;
 
 import java.io.*;
 import java.net.Socket;
+
+import static java.awt.Color.red;
 
 public class ChatRoomFormController extends Thread{
     public AnchorPane chatRoomContext;
@@ -118,6 +122,9 @@ public class ChatRoomFormController extends Thread{
                         hBox.setAlignment(Pos.BOTTOM_RIGHT);
                         hBox.getChildren().add(imageView);
                         Text text1=new Text(": Me ");
+
+
+
                         hBox.getChildren().add(text1);
 
                     }

@@ -12,7 +12,7 @@
 
 <AnchorPane fx:id="chatRoomContext" prefHeight="714.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ChatRoomFormController">
    <children>
-      <JFXTextField fx:id="txtTextField" layoutX="10.0" layoutY="612.0" prefHeight="50.0" prefWidth="493.0" promptText="Type a message" style="-fx-border-color: black; -fx-background-color: #ecf0f1;" />
+      <JFXTextField fx:id="txtTextField" layoutX="10.0" layoutY="612.0" prefHeight="50.0" prefWidth="493.0" promptText="Type a message" style="-fx-border-color: black; -fx-background-color: #ecf0f1; -fx-prompt-text-size: 25;" />
       <JFXButton layoutX="509.0" layoutY="612.0" onAction="#btnSendOnAction" prefHeight="50.0" prefWidth="77.0" style="-fx-border-color: black; -fx-background-color: #2ecc71;" text="Send">
          <font>
             <Font name="System Bold" size="20.0" />
@@ -25,10 +25,10 @@
       </Label>
       <ScrollPane layoutX="14.0" layoutY="55.0" prefHeight="543.0" prefWidth="576.0">
          <content>
-            <VBox fx:id="vBox" prefHeight="503.0" prefWidth="526.0" />
+            <VBox fx:id="vBox" prefHeight="503.0" prefWidth="526.0" style="-fx-font-size: 30;" />
          </content>
       </ScrollPane>
-      <ImageView fitHeight="50.0" fitWidth="77.0" layoutX="432.0" layoutY="615.0" onMouseClicked="#imageSendOnMouseClicked" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="50.0" fitWidth="77.0" layoutX="442.0" layoutY="625.0" onMouseClicked="#imageSendOnMouseClicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assest/icons8-camera-100.png" />
          </image>

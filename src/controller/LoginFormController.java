@@ -17,21 +17,20 @@ public class LoginFormController {
 
     public void btnLoginOnAction(ActionEvent actionEvent) throws IOException {
         userName=txtUserName.getText();
-       if(userName != null) {
-           Stage stage = (Stage) txtUserName.getScene().getWindow();
-           stage.close();
-           Stage stage1 = new Stage();
-           stage1.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/ChatRoomForm.fxml"))));
-           stage1.setResizable(false);
-           //primaryStage.getIcons().add(new Image("location"));
-           stage1.setTitle("sample title");
-           stage1.centerOnScreen();
-           stage1.show();
+        if (userName.equals("")) {
+            new Alert(Alert.AlertType.WARNING, "Your Logging is Failed!..").showAndWait();
 
+        }else {
+            Stage stage = (Stage) txtUserName.getScene().getWindow();
+            stage.close();
+            Stage stage1 = new Stage();
+            stage1.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/ChatRoomForm.fxml"))));
+            stage1.setResizable(false);
+            //primaryStage.getIcons().add(new Image("location"));
+            stage1.setTitle(userName);
+            stage1.centerOnScreen();
+            stage1.show();
+        }
 
-       }else{
-           new Alert(Alert.AlertType.WARNING,"Login Failed...!").show();
-
-       }
     }
 }
